@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.logo}>
-        <Image src="hori.png" alt="Your Logo" />
+        <Image width={180} height={50} src="/hori.png" alt="Your Logo" />
       </div>
       <input
         type="checkbox"

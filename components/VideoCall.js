@@ -59,7 +59,7 @@ const VideoCall = () => {
         });
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [socket]);
 
   return (
     <div>
