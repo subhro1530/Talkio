@@ -15,7 +15,7 @@ const GettingStarted = () => {
           colleagues, or clients effortlessly. With our user-friendly interface
           and advanced technology, you can enjoy crystal-clear video and audio
           quality, real-time screen sharing, and instant messaging—all in one
-          place. Whether it's staying connected with loved ones or conducting
+          place. Whether its staying connected with loved ones or conducting
           important business meetings, Talk.io ensures that your video calls are
           hassle-free and enjoyable. Join us today and discover the future of
           effortless video communication.
