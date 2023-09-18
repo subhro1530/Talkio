@@ -1,12 +1,13 @@
 // components/Navbar.js
 import Link from "next/link";
 import styles from "../styles/Navbar.module.css";
+import Image from "next/image";
 
 const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <div className={styles.logo}>
-        <img src="hori.png" alt="Your Logo" />
+        <Image src="hori.png" alt="Your Logo" />
       </div>
       <input
         type="checkbox"
