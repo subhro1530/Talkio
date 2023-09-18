@@ -1,6 +1,7 @@
 // components/GettingStarted.js
 import React from "react";
 import styles from "../styles/GettingStarted.module.css";
+import Link from "next/link";
 
 const GettingStarted = () => {
   return (
@@ -19,9 +20,9 @@ const GettingStarted = () => {
           hassle-free and enjoyable. Join us today and discover the future of
           effortless video communication.
         </p>
-        <a href="/start" className={styles.getStartedBtn}>
+        <Link href="/start" className={styles.getStartedBtn}>
           Get Started
-        </a>
+        </Link>
       </div>
     </section>
   );
