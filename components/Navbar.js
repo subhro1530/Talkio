@@ -1,44 +1,41 @@
 // components/Navbar.js
 import Link from "next/link";
-import { useState } from "react"; // Import useState
 import styles from "../styles/Navbar.module.css";
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false); // Initialize state
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen); // Toggle the state
-  };
-
   return (
     <nav className={styles.nav}>
-      <div className={styles.logo}>Your Logo</div>
-      <div className={`${styles["nav-links"]} ${menuOpen ? "active" : ""}`}>
+      <div className={styles.logo}>
+        <img src="hori.png" alt="Your Logo" />
+      </div>
+      <input
+        type="checkbox"
+        className={styles["menu-toggle"]}
+        id="menu-toggle"
+      />
+      <label htmlFor="menu-toggle" className={styles["menu-icon"]}>
+        &#9776;
+      </label>
+      <div className={styles["nav-links"]}>
         <ul>
           <li>
-            <Link href="/">
-              <a>Getting Started</a>
-            </Link>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/tools">
-              <a>Tools</a>
-            </Link>
+            <Link href="/start">Getting Started</Link>
           </li>
           <li>
-            <Link href="/apis">
-              <a>APIs</a>
-            </Link>
+            <Link href="/tools">Tools</Link>
+          </li>
+          <li>
+            <Link href="/apis">APIs</Link>
           </li>
         </ul>
       </div>
       <div className={styles.auth}>
-        <Link href="/login">
-          <a>Login/Signup</a>
+        <Link className="loginBtn" href="/login">
+          Login/Signup
         </Link>
-      </div>
-      <div className="menu-toggle" onClick={toggleMenu}>
-        <span>&#9776;</span>
       </div>
     </nav>
   );
