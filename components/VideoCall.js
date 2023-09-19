@@ -1,5 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "/styles/VideoCall.module.css";
+import socketIOClient from "socket.io-client";
+import io from "socket.io-client";
+import Peer from "simple-peer";
 
 const VideoCall = () => {
   const localVideoRef = useRef();
@@ -7,6 +10,36 @@ const VideoCall = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [isVideoOn, setIsVideoOn] = useState(true);
   const [cameraStream, setCameraStream] = useState(null);
+
+  const [meetingCode, setMeetingCode] = useState("");
+  const [socket, setSocket] = useState(null);
+
+  /*
+  OPTIONAL
+  */
+
+  /*END*/
+
+  useEffect(() => {
+    const socket = socketIOClient("/"); // Replace with your Socket.IO server URL
+    setSocket(socket);
+
+    // Clean up the socket connection on component unmount
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  const generateRandomMeetingCode = () => {
+    const randomMeetingCode = Math.random().toString(36).substring(2, 12);
+    setMeetingCode(randomMeetingCode);
+  };
+  const joinMeeting = () => {
+    if (meetingCode && socket) {
+      // Send the meeting code to the server
+      socket.emit("joinMeeting", meetingCode);
+    }
+  };
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
@@ -74,12 +107,27 @@ const VideoCall = () => {
         <video ref={remoteVideoRef} autoPlay className={styles.video} />
       </div>
       <div className={styles.controls}>
-        <button onClick={toggleMute} className={styles.button}>
+        <button onClick={toggleMute}>
           {isMuted ? "Mute" : "Unmute"} Microphone
         </button>
-        <button onClick={toggleVideo} className={styles.button}>
+        <button onClick={toggleVideo}>
           {isVideoOn ? "Turn Off Video" : "Turn On Video"}
         </button>
+      </div>
+      <div className={styles.optionsContainer}>
+          <p>You are in a meeting with code: {meetingCode}</p>
+          <>
+            <input
+              type="text"
+              placeholder="Enter Meeting Code"
+              value={meetingCode}
+              onChange={(e) => setMeetingCode(e.target.value)}
+              className={styles.input}
+            />
+            <button onClick={joinMeeting} className={styles.button}>
+              Join Meeting
+            </button>
+          </>
       </div>
     </div>
   );
