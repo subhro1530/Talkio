@@ -5,6 +5,7 @@
   min-height: 100vh;
   background-image: url("/Frame1.png"); /* Replace with your image URL */
   z-index: -100;
+  background-size: cover;
   color: #ff0084;
   text-align: center;
   background-attachment: fixed;
@@ -42,7 +43,7 @@
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  
+
   margin-top: 20px;
 }
 
