@@ -2,16 +2,18 @@
 
 /* Container for the entire video call component */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   min-height: 100vh;
-  background-image: url('/Frame1.png'); /* Replace with your image URL */
-  background-size: cover;
+  background-image: url("/Frame1.png"); /* Replace with your image URL */
+  z-index: -100;
+  color: #ff0084;
+  text-align: center;
+  background-attachment: fixed;
+  background-blend-mode: multiply;
   background-position: center;
-  background-repeat: no-repeat;
-  color: #fff;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
   padding: 20px; /* Added padding for mobile devices */
 }
 
@@ -30,22 +32,24 @@
 /* Video elements */
 .video-container video {
   max-width: 100%;
+  z-index: 100;
   max-height: 100%;
 }
 
 /* Controls (buttons) */
 .controls {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   gap: 10px;
+  
   margin-top: 20px;
 }
 
 /* Individual control buttons */
 .controls button {
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #ff0084;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -54,7 +58,7 @@
 
 /* Button hover effect */
 .controls button:hover {
-  background-color: #0056b3;
+  background-color: #ff0037;
 }
 
 /* Media query for smaller screens (e.g., mobile devices) */
